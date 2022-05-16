@@ -34,4 +34,6 @@ function pickRandomWord() {
 // a user presses a key
   // guess letter (someLetter)
 
+// a user presses reset scores
+
 // INITIALIZATION =========================================
