@@ -25,7 +25,7 @@ var losses = 0;
 // start game
 function startGame() {
   // start the timer
-  startTimer()
+  startTimer();
   // pick random word as the current word
   currentWord = pickRandomWord();
   console.log("currentWord: ", currentWord);
@@ -82,13 +82,9 @@ function youWin() {
 }
 
 function pickRandomWord() {
-  console.log("Picking Random Word")
+  console.log("Picking Random Word");
   // keep the wordbank here
-  var wordBank = [
-    "javascript",
-    "jquery",
-    "boolean"
-  ]
+  var wordBank = ["javascript", "jquery", "boolean"];
   // get a random index
   var randomIndex = Math.floor(Math.random() * wordBank.length);
   // get the word at that index from the wordbank
@@ -98,14 +94,13 @@ function pickRandomWord() {
 }
 
 function generateGuessedWord(word) {
-
   // turn the word into blanks return it
   for (var i = 0; i < word.length; i++) {
-    guessedWord +=
+    guessedWord += "_";
   }
   // render the guessed word
-  
-  return "____"
+
+  return "____";
 }
 
 function renderGuessedWord() {
