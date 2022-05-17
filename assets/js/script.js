@@ -65,6 +65,7 @@ function renderGuessedWord() {
 }
 
 function guessLetter(key) {
+  console.log(`${key} key received`);
   // check if the key is in the current word
   // yes? go through the guessed word and replace the blanks with that letter where appropriate
 }
@@ -78,7 +79,11 @@ startButton.addEventListener("click", function () {
 });
 
 // a user presses a key
-// guess letter (someLetter)
+document.addEventListener("keydown", function (e) {
+  console.log(`keydown event: ${e.key}`);
+  // guess letter (someLetter)
+  guessLetter(e.key);
+});
 //
 
 // a user presses reset scores
