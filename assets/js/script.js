@@ -11,9 +11,9 @@ var lossesElement = document.querySelector("#losses")
 
 // STATE =========================================
 // the current word
-var currentWord;
+var currentWord = "";
 // guessed word (may contain blanks)
-var guessedWord;
+var guessedWord = "";
 // wins
 var wins = 0;
 // losses
@@ -66,15 +66,27 @@ function youWin() {
 function pickRandomWord() {
   console.log("Picking Random Word")
   // keep the wordbank here
+  var wordBank = [
+    "javascript",
+    "jquery",
+    "boolean"
+  ]
   // get a random index
+  var randomIndex = Math.floor(Math.random() * wordBank.length);
   // get the word at that index from the wordbank
+  var randomWord = wordBank[randomIndex];
 
-  return "random";
+  return randomWord;
 }
 
 function generateGuessedWord(word) {
+
   // turn the word into blanks return it
+  for (var i = 0; i < word.length; i++) {
+    guessedWord +=
+  }
   // render the guessed word
+  
   return "____"
 }
 
