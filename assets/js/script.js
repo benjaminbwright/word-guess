@@ -73,12 +73,16 @@ function checkWin() {
 
 function youLose() {
   // record the loss
+  losses++
   // display a "you lose"
+  lossesElement.textContent = losses;
 }
 
 function youWin() {
-  // record the w
-  // display a "you lose"
+  // record the wins
+  wins++
+  // display a "you win"
+  winsElement.textContent = wins;
 }
 
 function pickRandomWord() {
@@ -101,7 +105,7 @@ function generateGuessedWord(word) {
 
   // turn the word into blanks return it
   for (var i = 0; i < word.length; i++) {
-    guessedWord +=
+    guessedWord += "_"
   }
   // render the guessed word
   
