@@ -3,11 +3,11 @@
 var startButton = document.querySelector("#start");
 // blanks container
 // reset button
-var resetButton = document.querySelector("#reset")
+var resetButton = document.querySelector("#reset");
 // wins element
-var winsElement = document.querySelector("#wins")
+var winsElement = document.querySelector("#wins");
 // losses element
-var lossesElement = document.querySelector("#losses")
+var lossesElement = document.querySelector("#losses");
 
 // STATE =========================================
 // the current word
@@ -29,17 +29,31 @@ function startGame() {
 function startTimer() {
   console.log("starting the timer");
   // set the starting time
+  var timeLeft = 10;
   // start the timer running every second
-  // if there's time left
-  // counting down on the timer
-  // render the updated time on th page
-  // checking for a win? true or false
-  // if it's a win
-  // you stop the timer
-  // you win
-  // otherwise (there's no time left)
-  // stop the timer
-  // you lose
+  var timer = setInterval(function () {
+    // if there's time left
+    if (timeLeft > 0) {
+      // counting down on the timer
+      timeLeft--;
+      // render the updated time on th page
+
+      // checking for a win? true or false
+      if (checkWin()) {
+        // if it's a win
+        // you stop the timer
+        clearInterval(timer);
+        // you win
+        youWin();
+      }
+    } else {
+      // otherwise (there's no time left)
+      // stop the timer
+      clearInterval(timer);
+      // you lose
+      youLose();
+    }
+  }, 1000);
 }
 
 function checkWin() {
@@ -103,6 +117,5 @@ document.addEventListener("keydown", function (e) {
 
 // a user presses reset scores
 resetButton.addEventListener("click", resetScores);
-
 
 // INITIALIZATION =========================================
