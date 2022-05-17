@@ -27,7 +27,9 @@ function startGame() {
   // pick random word as the current word
   currentWord = pickRandomWord();
   console.log("currentWord: ", currentWord);
-  // genarate an unguessed word (blanks)
+  // genarate an guessed word (blanks)
+  guessedWord = generateGuessedWord(currentWord);
+  console.log("guessedWord: ", guessedWord);
 }
 
 function startTimer() {
@@ -69,9 +71,11 @@ function pickRandomWord() {
 
   return "random";
 }
-function generateGuessedWord() {
+
+function generateGuessedWord(word) {
   // turn the word into blanks return it
   // render the guessed word
+  return "____"
 }
 
 function renderGuessedWord() {
