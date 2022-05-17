@@ -11,7 +11,9 @@ var lossesElement = document.querySelector("#losses")
 
 // STATE =========================================
 // the current word
+var currentWord;
 // guessed word (may contain blanks)
+var guessedWord;
 // wins
 var wins = 0;
 // losses
@@ -20,9 +22,11 @@ var losses = 0;
 // FUNCTIONS =========================================
 // start game
 function startGame() {
-  console.log("startGame triggered");
   // start the timer
+  startTimer()
   // pick random word as the current word
+  currentWord = pickRandomWord();
+  console.log("currentWord: ", currentWord);
   // genarate an unguessed word (blanks)
 }
 
@@ -58,9 +62,12 @@ function youWin() {
 }
 
 function pickRandomWord() {
+  console.log("Picking Random Word")
   // keep the wordbank here
   // get a random index
   // get the word at that index from the wordbank
+
+  return "random";
 }
 function generateGuessedWord() {
   // turn the word into blanks return it
@@ -88,7 +95,6 @@ function resetScores() {
 // USER INTERACTIONS =========================================
 // a user clicks the start button
 startButton.addEventListener("click", function () {
-  console.log("start button clicked");
   // start game
   startGame();
 });
