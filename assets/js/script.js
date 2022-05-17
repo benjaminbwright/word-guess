@@ -2,6 +2,7 @@
 // start button
 var startButton = document.querySelector("#start");
 // blanks container
+var wordMessageEl = document.querySelector("#word-message");
 // reset button
 var resetButton = document.querySelector("#reset");
 // wins element
@@ -102,18 +103,18 @@ function pickRandomWord() {
 }
 
 function generateGuessedWord(word) {
-
+  console.log("rendering guessed word")
   // turn the word into blanks return it
   for (var i = 0; i < word.length; i++) {
     guessedWord += "_"
   }
   // render the guessed word
-  
-  return "____"
+  renderGuessedWord();
 }
 
 function renderGuessedWord() {
   // put the guessed word on the page with blanks
+  wordMessageEl.textContent = guessedWord.split("").join(" ");
 }
 
 function guessLetter(key) {
