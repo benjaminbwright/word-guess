@@ -3,12 +3,19 @@
 var startButton = document.querySelector("#start");
 // blanks container
 // reset button
+var resetButton = document.querySelector("#reset")
 // wins element
+var winsElement = document.querySelector("#wins")
 // losses element
+var lossesElement = document.querySelector("#losses")
 
 // STATE =========================================
 // the current word
 // guessed word (may contain blanks)
+// wins
+var wins = 0;
+// losses
+var losses = 0;
 
 // FUNCTIONS =========================================
 // start game
@@ -69,6 +76,14 @@ function guessLetter(key) {
   // yes? go through the guessed word and replace the blanks with that letter where appropriate
 }
 
+function resetScores() {
+  console.log("clicked reset button");
+  wins = 0;
+  losses = 0;
+  winsElement.textContent = wins;
+  lossesElement.textContent = wins;
+}
+
 // USER INTERACTIONS =========================================
 // a user clicks the start button
 startButton.addEventListener("click", function () {
@@ -82,5 +97,7 @@ startButton.addEventListener("click", function () {
 //
 
 // a user presses reset scores
+resetButton.addEventListener("click", resetScores);
+
 
 // INITIALIZATION =========================================
