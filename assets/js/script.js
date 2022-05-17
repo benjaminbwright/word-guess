@@ -13,7 +13,9 @@ var timeLeftElement = document.querySelector("#time-left");
 
 // STATE =========================================
 // the current word
+var currentWord = "";
 // guessed word (may contain blanks)
+var guessedWord = "";
 // wins
 var wins = 0;
 // losses
@@ -22,10 +24,14 @@ var losses = 0;
 // FUNCTIONS =========================================
 // start game
 function startGame() {
-  console.log("startGame triggered");
   // start the timer
+  startTimer()
   // pick random word as the current word
-  // genarate an unguessed word (blanks)
+  currentWord = pickRandomWord();
+  console.log("currentWord: ", currentWord);
+  // genarate an guessed word (blanks)
+  guessedWord = generateGuessedWord(currentWord);
+  console.log("guessedWord: ", guessedWord);
 }
 
 function startTimer() {
@@ -76,13 +82,30 @@ function youWin() {
 }
 
 function pickRandomWord() {
+  console.log("Picking Random Word")
   // keep the wordbank here
+  var wordBank = [
+    "javascript",
+    "jquery",
+    "boolean"
+  ]
   // get a random index
+  var randomIndex = Math.floor(Math.random() * wordBank.length);
   // get the word at that index from the wordbank
+  var randomWord = wordBank[randomIndex];
+
+  return randomWord;
 }
-function generateGuessedWord() {
+
+function generateGuessedWord(word) {
+
   // turn the word into blanks return it
+  for (var i = 0; i < word.length; i++) {
+    guessedWord +=
+  }
   // render the guessed word
+  
+  return "____"
 }
 
 function renderGuessedWord() {
@@ -110,7 +133,6 @@ function renderTimeLeft(time) {
 // USER INTERACTIONS =========================================
 // a user clicks the start button
 startButton.addEventListener("click", function () {
-  console.log("start button clicked");
   // start game
   startGame();
 });
