@@ -8,6 +8,8 @@ var resetButton = document.querySelector("#reset");
 var winsElement = document.querySelector("#wins");
 // losses element
 var lossesElement = document.querySelector("#losses");
+// time left element
+var timeLeftElement = document.querySelector("#time-left");
 
 // STATE =========================================
 // the current word
@@ -30,6 +32,8 @@ function startTimer() {
   console.log("starting the timer");
   // set the starting time
   var timeLeft = 10;
+  // render starting time
+  renderTimeLeft(timeLeft);
   // start the timer running every second
   var timer = setInterval(function () {
     // if there's time left
@@ -37,7 +41,7 @@ function startTimer() {
       // counting down on the timer
       timeLeft--;
       // render the updated time on th page
-
+      renderTimeLeft(timeLeft);
       // checking for a win? true or false
       if (checkWin()) {
         // if it's a win
@@ -97,6 +101,10 @@ function resetScores() {
   losses = 0;
   winsElement.textContent = wins;
   lossesElement.textContent = wins;
+}
+
+function renderTimeLeft(time) {
+  timeLeftElement.textContent = `Time left ${time}`;
 }
 
 // USER INTERACTIONS =========================================
