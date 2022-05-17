@@ -75,11 +75,13 @@ function checkWin() {
 function youLose() {
   // record the loss
   // display a "you lose"
+  console.log("you lose!");
 }
 
 function youWin() {
   // record the w
   // display a "you lose"
+  console.log("you win!");
 }
 
 function pickRandomWord() {
@@ -100,8 +102,7 @@ function generateGuessedWord(word) {
     guessedWord += "_";
   }
   // render the guessed word
-
-  return "____";
+  return guessedWord;
 }
 
 function renderGuessedWord() {
@@ -109,9 +110,19 @@ function renderGuessedWord() {
 }
 
 function guessLetter(key) {
-  console.log(`${key} key received`);
   // check if the key is in the current word
-  // yes? go through the guessed word and replace the blanks with that letter where appropriate
+  if (currentWord.toLowerCase().includes(key.toLowerCase())) {
+    // yes? go through the guessed word and replace the blanks with that letter where appropriate
+
+    var guessedArray = guessedWord.split("");
+    for (let i = 0; i < currentWord.length; i++) {
+      if (currentWord[i] === key) {
+        guessedArray[i] = key;
+      }
+    }
+    guessedWord = guessedArray.join("");
+    console.log("guessedWord", guessedWord);
+  }
 }
 
 function resetScores() {
@@ -135,7 +146,6 @@ startButton.addEventListener("click", function () {
 
 // a user presses a key
 document.addEventListener("keydown", function (e) {
-  console.log(`keydown event: ${e.key}`);
   // guess letter (someLetter)
   guessLetter(e.key);
 });
