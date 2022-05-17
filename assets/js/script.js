@@ -69,6 +69,7 @@ function startTimer() {
 function checkWin() {
   console.log("checking for a win");
   // return: does the guessed word match the current word ? true or false
+  return currentWord === guessedWord;
 }
 
 function youLose() {
