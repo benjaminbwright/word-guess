@@ -1,0 +1,14 @@
+:root {
+    --code-font: 'Courier New', Courier, monospace;
+    --code-color: rgb(0, 174, 0);
+    --code-background: #0f0f0f;
+}
+
+#word-board {
+    background: var(--code-background);
+    color: var(--code-color);
+}
+
+#word-message {
+    font-family: var(--code-font);
+}
