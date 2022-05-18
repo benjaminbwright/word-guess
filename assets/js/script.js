@@ -26,13 +26,14 @@ var losses = 0;
 // start game
 function startGame() {
   // start the timer
-  startTimer()
+  startTimer();
   // pick random word as the current word
   currentWord = pickRandomWord();
   console.log("currentWord: ", currentWord);
   // genarate an guessed word (blanks)
-  guessedWord = generateGuessedWord(currentWord);
+  generateGuessedWord(currentWord);
   console.log("guessedWord: ", guessedWord);
+
 }
 
 function startTimer() {
@@ -70,6 +71,7 @@ function startTimer() {
 function checkWin() {
   console.log("checking for a win");
   // return: does the guessed word match the current word ? true or false
+  return currentWord === guessedWord;
 }
 
 function youLose() {
@@ -87,13 +89,9 @@ function youWin() {
 }
 
 function pickRandomWord() {
-  console.log("Picking Random Word")
+  console.log("Picking Random Word");
   // keep the wordbank here
-  var wordBank = [
-    "javascript",
-    "jquery",
-    "boolean"
-  ]
+  var wordBank = ["javascript", "jquery", "boolean"];
   // get a random index
   var randomIndex = Math.floor(Math.random() * wordBank.length);
   // get the word at that index from the wordbank
@@ -104,6 +102,7 @@ function pickRandomWord() {
 
 function generateGuessedWord(word) {
   console.log("rendering guessed word")
+  guessedWord = "";
   // turn the word into blanks return it
   for (var i = 0; i < word.length; i++) {
     guessedWord += "_"
@@ -118,9 +117,19 @@ function renderGuessedWord() {
 }
 
 function guessLetter(key) {
-  console.log(`${key} key received`);
   // check if the key is in the current word
-  // yes? go through the guessed word and replace the blanks with that letter where appropriate
+  if (currentWord.toLowerCase().includes(key.toLowerCase())) {
+    // yes? go through the guessed word and replace the blanks with that letter where appropriate
+
+    var guessedArray = guessedWord.split("");
+    for (let i = 0; i < currentWord.length; i++) {
+      if (currentWord[i] === key) {
+        guessedArray[i] = key;
+      }
+    }
+    guessedWord = guessedArray.join("");
+    renderGuessedWord();
+  }
 }
 
 function resetScores() {
@@ -132,7 +141,7 @@ function resetScores() {
 }
 
 function renderTimeLeft(time) {
-  timeLeftElement.textContent = `Time left ${time}`;
+  timeLeftElement.textContent = time;
 }
 
 // USER INTERACTIONS =========================================
@@ -144,7 +153,6 @@ startButton.addEventListener("click", function () {
 
 // a user presses a key
 document.addEventListener("keydown", function (e) {
-  console.log(`keydown event: ${e.key}`);
   // guess letter (someLetter)
   guessLetter(e.key);
 });
