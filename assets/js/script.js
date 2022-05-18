@@ -2,6 +2,7 @@
 // start button
 var startButton = document.querySelector("#start");
 // blanks container
+var wordMessageEl = document.querySelector("#word-message");
 // reset button
 var resetButton = document.querySelector("#reset");
 // wins element
@@ -30,8 +31,9 @@ function startGame() {
   currentWord = pickRandomWord();
   console.log("currentWord: ", currentWord);
   // genarate an guessed word (blanks)
-  guessedWord = generateGuessedWord(currentWord);
+  generateGuessedWord(currentWord);
   console.log("guessedWord: ", guessedWord);
+
 }
 
 function startTimer() {
@@ -74,14 +76,16 @@ function checkWin() {
 
 function youLose() {
   // record the loss
+  losses++
   // display a "you lose"
-  console.log("you lose!");
+  lossesElement.textContent = losses;
 }
 
 function youWin() {
-  // record the w
-  // display a "you lose"
-  console.log("you win!");
+  // record the wins
+  wins++
+  // display a "you win"
+  winsElement.textContent = wins;
 }
 
 function pickRandomWord() {
@@ -97,16 +101,19 @@ function pickRandomWord() {
 }
 
 function generateGuessedWord(word) {
+  console.log("rendering guessed word")
+  guessedWord = "";
   // turn the word into blanks return it
   for (var i = 0; i < word.length; i++) {
-    guessedWord += "_";
+    guessedWord += "_"
   }
   // render the guessed word
-  return guessedWord;
+  renderGuessedWord();
 }
 
 function renderGuessedWord() {
   // put the guessed word on the page with blanks
+  wordMessageEl.textContent = guessedWord.split("").join(" ");
 }
 
 function guessLetter(key) {
@@ -121,7 +128,7 @@ function guessLetter(key) {
       }
     }
     guessedWord = guessedArray.join("");
-    console.log("guessedWord", guessedWord);
+    renderGuessedWord();
   }
 }
 
@@ -134,7 +141,7 @@ function resetScores() {
 }
 
 function renderTimeLeft(time) {
-  timeLeftElement.textContent = `Time left ${time}`;
+  timeLeftElement.textContent = time;
 }
 
 // USER INTERACTIONS =========================================
